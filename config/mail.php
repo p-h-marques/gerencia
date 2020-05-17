@@ -36,12 +36,14 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'driver' => env('MAIL_DRIVER', 'smtp'),
+            'host' => env('MAIL_HOST', 'smtp.gmail.com'),
             'port' => env('MAIL_PORT', 587),
+            'from' => ['address' => 'dg.pedromarques@gmail.com','name' => 'teste'],
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
+            'username' => env('MAIL_USERNAME','dg.pedromarques@gmail.com'),
+            'password' => env('MAIL_PASSWORD','jyfdfgotmqdgjtkc'),
+            'sendmail' => '/usr/sbin/sendmail -bs',
         ],
 
         'ses' => [
@@ -83,8 +85,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'dg.pedromarques@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'AAAAA'),
     ],
 
     /*
