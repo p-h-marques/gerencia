@@ -11,9 +11,8 @@
   <title>@yield('title')</title>
 </head>
 <body>
-  <h1>Layout Principal</h1>
 
   @yield('content')
-
+  @stack('scripts')
 </body>
 </html>

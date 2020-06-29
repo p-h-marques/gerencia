@@ -1,5 +1,19 @@
+/*
+COMO DIVIDIR AS FOLHAS DE ESTILO, FUTURAMENTE?
+defaults.scss > variáveis, tamanhos fixos & estilos padrão
+auth.scss > estilos da área de autenticação
+*/
+
 //variables
 $g_4: #393939;
+$g_3: #7a7a7a;
+$g_2: #b9b9b9;
+$g_0: #ffffff;
+$green_0: #e5f0df;
+$green_1: #477e2d;
+$error: #d84c4c;
+
+$shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 
 //reseting default styles
 * {
@@ -16,4 +30,164 @@ html {
 body {
   height: 100vh;
   color: $g_4;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+
+  &:hover, &:focus, &:active{
+    text-decoration: underline;
+  }
+}
+
+//utils
+@function rem($size) {
+  @return $size / 16px * 1rem;
+}
+
+//auth styles
+.world{
+  height: 100vh;
+  width: 100vw;
+  background: $green_0;
+  padding: 112px 400px 112px 100px;
+}
+
+.container{
+  background: $g_0;
+  box-shadow: $shadow;
+  height: 100%;
+  min-height: 620px;
+
+  display: grid;
+  grid-template-columns: calc(100% - 150px) 150px;
+  grid-template-rows: 110px calc(100% - 220px) 110px;
+  grid-template-areas: "header aside" "main aside" "footer aside"
+}
+
+header{
+  grid-area: header;
+  padding: 37px 0px 0px 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  img{
+    width: calc(195px + 40px);
+    padding: 13px 40px 13px 0px;
+    border-right: 2px solid $g_4;
+  }
+
+  & > div:first-child{
+    margin-right: 30px;
+  }
+
+  div + div{
+    margin-right: 50px;
+  }
+
+  p{
+    line-height: 1rem;
+  }
+
+  div > p:first-child{
+    color: $g_3;
+  }
+
+  p + p{
+    margin-top: 5px;
+    color: $green_1;
+    font-weight: bold;
+  }
+}
+
+main{
+  grid-area: main;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  padding-left: 50px;
+  flex-direction: column;
+  justify-content: center;
+
+  h2{
+    font-size: rem(36px);
+    line-height: rem(50px);
+    color: $green_1;
+    margin-bottom: 44px;
+    font-weight: normal;
+  }
+
+  input{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    border: 0px;
+    border-bottom: 2px solid $g_4;
+    margin-right: 420px;
+    margin-bottom: 50px;
+    padding: 0px 0px 10px 10px;
+    font-size: rem(30px);
+    font-family: 'Lato', sans-serif;
+    color: $g_4;
+
+    &::-webkit-input-placeholder {
+      color: $g_2;
+    }
+
+    &::-moz-placeholder {
+      color: $g_2;
+    }
+
+    &:-ms-input-placeholder {
+      color: $g_2;
+    }
+
+    &::placeholder {
+      color: $g_2;
+    }
+
+    &:focus{
+      outline: none;
+      border: 0px;
+      border-bottom: 2px solid $g_4;
+    }
+  }
+
+  p{
+    margin-left: 30px;
+
+    img{
+      width: 16px;
+      margin-right: 10px;
+    }
+
+    span{
+      line-height: 1rem;
+      color: $error;
+    }
+  }
+
+  p + p{
+    margin-top: 20px;
+  }
+}
+
+aside{
+  grid-area: aside;
+  background: $g_3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+footer{
+  grid-area: footer;
+  padding: 0px 0px 50px 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
 }
