@@ -10,5 +10,6 @@ Route::get('/', function () {
 Route::group(['prefix' => '/login', 'namespace' => 'AuthNew',], function(){
 
     Route::get('/', 'AuthController@index')->name('login');
+    Route::get('/has-email', 'AuthController@has_email')->name('login.has-email');
 
 });

@@ -42,5 +42,5 @@
 @endsection
 
 @push('scripts')
-
+<script src="{{asset('js/auth/auth.js')}}"></script>
 @endpush
