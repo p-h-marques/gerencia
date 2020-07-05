@@ -39,7 +39,7 @@
 @endsection
 
 @push('scripts')
-<script src="{{asset('js/auth/auth.js')}}"></script>
+<script type="module" src="{{asset('js/auth/auth.js')}}"></script>
 
 <script>
   const img_error = "{{asset('img/icons/error.svg')}}"

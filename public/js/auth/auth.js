@@ -1,10 +1,11 @@
+//importing commons
+import {validateEmail} from '../common/validations.js'
+
+//defining constants
 const input = document.querySelector('input')
 const action = document.querySelector('aside')
 const main = document.querySelector('main')
 const aside = document.querySelector('aside')
-// const form = document.querySelector('form')
-
-
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
@@ -28,77 +29,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 })
 
 function customValidation(){
-  const validation = validateEmail()
+  const validation = validateEmail(input, main, aside)
 
   return validation()
-}
-
-function validateEmail(){
-
-  function verifyErrors() {
-    let foundError = false;
-
-    for(let error in input.validity) {
-      if (input.validity[error] && !input.validity.valid ) {
-        foundError = error
-      }
-    }
-    return foundError;
-  }
-
-  function customMessage(typeError) {
-    const messages = {
-      email: {
-        valueMissing: "Não esqueça de digitar seu email, ein!",
-        typeMismatch: "O email digitado é inválido, que tal dar uma revisada nele?"
-      }
-    }
-
-    return messages[input.type][typeError]
-  }
-
-  function insertingFeedback(msg, type = 'error'){
-    let icon = ''
-
-    switch (type){
-      case 'error':
-        icon = img_error
-        break
-    }
-
-    let html = `<p><img src="${icon}" alt=""><span>${msg}</span></p>`
-
-    main.querySelectorAll('p').forEach((val)=>{
-      val.remove()
-    })
-
-    main.insertAdjacentHTML('beforeend', html)
-  }
-
-  function setCustomMessage(message) {
-    if (message) {
-      insertingFeedback(message, 'error')
-    } else {
-      main.querySelectorAll('p').forEach((val)=>{
-        val.remove()
-      })
-    }
-  }
-
-  return function() {
-    const error = verifyErrors()
-
-    if(error) {
-      const message = customMessage(error)
-      setCustomMessage(message)
-      return false
-    } else {
-      setCustomMessage()
-      aside.classList.add('active')
-      return true
-    }
-  }
-
 }
 
 function verifyPreviousEmail(email){
@@ -107,7 +40,11 @@ function verifyPreviousEmail(email){
   fetch(url_has_email + `?email=${email}`)
     .then((resp) => resp.json())
     .then(function(data){
-	    console.log(data)
+      if(data.has_email){
+        console.log(`Oi ${data.name}!`)
+      } else {
+        console.log('tu é novo aqui')
+      }
     })
     .catch((fail)=>{
 	    console.log(fail)
