@@ -10,22 +10,13 @@
         <div>
           <img src="{{asset('img/logos/horizontal-cores.svg')}}" alt="Gerencia!">
         </div>
-        {{--
-        <div>
-          <p>Seu email:</p>
-          <p>pedrohenriquesv@outlook.com</p>
-        </div>
-        <div>
-          <p>Seu nome:</p>
-          <p>Pedro Henrique</p>
-        </div>
-        --}}
       </header>
 
       <main>
         <h2>Olá! Digite seu melhor email:</h2>
 
-        <input type="email" placeholder="exemplo@dominio.com.br" required>
+        <input type="email" placeholder="exemplo@dominio.com.br" required autocomplete="off">
+        <input type="password" placeholder="sua senha aqui!" style="display: none" required autocomplete="off">
       </main>
 
       <footer>

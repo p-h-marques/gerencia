@@ -17,7 +17,11 @@ class AuthController extends Controller
         $user = User::where('email', $email)->first();
 
         if($user){
-            return ['has_email' => true, 'name' => $user->name];
+            return [
+                'has_email' => true,
+                'name' => $user->name,
+                'email' => $user->email
+            ];
         } else {
             return ['has_email' => false];
         }
