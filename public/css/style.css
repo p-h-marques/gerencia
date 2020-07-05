@@ -40,6 +40,7 @@ a:hover, a:focus, a:active {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   height: 100%;
   min-height: 620px;
+  min-width: 1200px;
   display: grid;
   grid-template-columns: calc(100% - 150px) 150px;
   grid-template-rows: 110px calc(100% - 220px) 110px;
@@ -98,12 +99,12 @@ main input {
   appearance: none;
   border: 0px;
   border-bottom: 2px solid #393939;
-  margin-right: 420px;
   margin-bottom: 50px;
   padding: 0px 0px 10px 10px;
   font-size: 1.875rem;
   font-family: "Lato", sans-serif;
   color: #393939;
+  width: calc(100% - 420px);
 }
 main input::-webkit-input-placeholder {
   color: #b9b9b9;
@@ -144,6 +145,17 @@ aside {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+aside:hover {
+  background: #407129;
+  cursor: pointer;
+}
+aside.active {
+  background: #477e2d;
+}
+aside.active:hover {
+  background: #407129;
+  cursor: pointer;
 }
 
 footer {

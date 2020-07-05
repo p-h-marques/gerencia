@@ -11,6 +11,7 @@ $g_2: #b9b9b9;
 $g_0: #ffffff;
 $green_0: #e5f0df;
 $green_1: #477e2d;
+$green_hover_1: #407129;
 $error: #d84c4c;
 
 $shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
@@ -59,6 +60,7 @@ a {
   box-shadow: $shadow;
   height: 100%;
   min-height: 620px;
+  min-width: 1200px;
 
   display: grid;
   grid-template-columns: calc(100% - 150px) 150px;
@@ -126,12 +128,12 @@ main{
 
     border: 0px;
     border-bottom: 2px solid $g_4;
-    margin-right: 420px;
     margin-bottom: 50px;
     padding: 0px 0px 10px 10px;
     font-size: rem(30px);
     font-family: 'Lato', sans-serif;
     color: $g_4;
+    width: calc(100% - 420px);
 
     &::-webkit-input-placeholder {
       color: $g_2;
@@ -182,6 +184,20 @@ aside{
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  &:hover{
+    background: $green_hover_1;
+    cursor: pointer;
+  }
+
+  &.active{
+    background: $green_1;
+
+    &:hover{
+      background: $green_hover_1;
+      cursor: pointer;
+    }
+  }
 }
 
 footer{

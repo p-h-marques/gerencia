@@ -10,6 +10,7 @@
         <div>
           <img src="{{asset('img/logos/horizontal-cores.svg')}}" alt="Gerencia!">
         </div>
+        {{--
         <div>
           <p>Seu email:</p>
           <p>pedrohenriquesv@outlook.com</p>
@@ -18,17 +19,13 @@
           <p>Seu nome:</p>
           <p>Pedro Henrique</p>
         </div>
+        --}}
       </header>
 
       <main>
-        <h2>Vamos escolher sua futura senha?</h2>
-        <input type="text" placeholder="digite aqui sua senha, por favor!">
-        <p>
-          <img src="{{asset('img/icons/error.svg')}}" alt=""><span>mínimo de 8 dígitos</span>
-        </p>
-        <p>
-          <img src="{{asset('img/icons/error.svg')}}" alt=""><span>precisa conter letras e números</span>
-        </p>
+        <h2>Olá! Digite seu melhor email:</h2>
+
+        <input type="email" placeholder="exemplo@dominio.com.br" required>
       </main>
 
       <footer>
@@ -43,4 +40,9 @@
 
 @push('scripts')
 <script src="{{asset('js/auth/auth.js')}}"></script>
+
+<script>
+  const img_error = "{{asset('img/icons/error.svg')}}"
+  const url_has_email = "{{URL::route('login.has_email')}}"
+</script>
 @endpush

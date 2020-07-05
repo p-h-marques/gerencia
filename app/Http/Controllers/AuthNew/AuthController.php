@@ -14,8 +14,6 @@ class AuthController extends Controller
 
     public function has_email(Request $request){
         $email = $request->get('email');
-        // dd($email);
-        //procurar email no banco de dados e retornar true ou false
         $user = User::where('email', $email)->first();
 
         if($user){
