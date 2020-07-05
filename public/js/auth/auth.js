@@ -26,10 +26,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   })
 
+  input_email.focus()
+
   input_password.addEventListener('keyup', (e)=>{
     if(e.keyCode === 13){
       let validation = validatePassword(input_password.value)
-      validation.valid ? console.log('validou') : invalidPasswordFeedback(validation)
+      validation.valid ? validPasswordFeedback(validation) : invalidPasswordFeedback(validation)
     }
   })
 
@@ -82,11 +84,10 @@ function askCurrentPassword(data){
   input_email.style.display = 'none'
   input_password.style.display = 'block'
   input_password.value = ''
-  console.log('ask')
+  input_password.focus()
 }
 
 function invalidPasswordFeedback(validation){
-  console.log(validation)
   aside.classList.remove('active')
   insertingFeedback(validation.feedback, 'error', main)
 }
@@ -96,5 +97,33 @@ function validPasswordFeedback(validation){
     val.remove()
   })
 
-  console.log(validation)
+
+  authTry(input_email.value, input_password.value)
+}
+
+function authTry(email, password){
+
+  function tryFeedback(result){
+    if(result){
+      window.location.href = url_do_authentication
+    } else {
+      console.log('não logar, senha errada!')
+    }
+  }
+
+  let login = false
+
+  fetch(url_authenticate + `?email=${email}&password=${password}`)
+    .then((resp) => resp.json())
+    .then(function(data){
+      login = data.auth
+    })
+    .then(()=>{
+      tryFeedback(login)
+    })
+    .catch((fail)=>{
+      console.log(fail)
+    })
+
+
 }

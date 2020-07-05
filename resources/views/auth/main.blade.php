@@ -35,5 +35,7 @@
 <script>
   const img_error = "{{asset('img/icons/error.svg')}}"
   const url_has_email = "{{URL::route('login.has_email')}}"
+  const url_authenticate = "{{URL::route('login.authenticate')}}"
+  const url_do_authentication = "{{URL::route('login.do_authentication')}}"
 </script>
 @endpush

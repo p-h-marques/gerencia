@@ -61,7 +61,6 @@ function validateEmail(input, main, aside){
   } else {
     setCustomMessage()
     aside.classList.add('active')
-    console.log('true')
     return true
   }
 }

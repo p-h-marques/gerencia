@@ -5,10 +5,17 @@ namespace App\Http\Controllers\AuthNew;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     public function index(){
+        // if(Auth::check()){
+        //     return redirect()->route('admin');
+        // } else {
+        //     return view('auth.main');
+        // }
+
         return view('auth.main');
     }
 
@@ -25,5 +32,20 @@ class AuthController extends Controller
         } else {
             return ['has_email' => false];
         }
+    }
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return ['auth' => true];
+        } else {
+            return ['auth' => false];
+        }
+    }
+
+    public function doAuthentication(){
+        return redirect()->intended('admin');
     }
 }
