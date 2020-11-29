@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function index(){
+        // comentado para testes
         // if(Auth::check()){
         //     return redirect()->route('admin');
         // } else {
@@ -47,5 +48,38 @@ class AuthController extends Controller
 
     public function doAuthentication(){
         return redirect()->intended('admin');
+    }
+
+    public function register(Request $request){
+        $credentials = $request->only('email', 'name', 'password');
+        //grava no banco
+
+        $save = User::insertOrIgnore([
+            'name' => $credentials['name'],
+            'email' => $credentials['email'],
+            'password' => bcrypt($credentials['password']),
+        ]);
+
+        if(!$save){
+            return [
+                'register' => false,
+                'auth' => false,
+                'about' => 'Registro de usuário está duplicado.'
+            ];
+        }
+
+        if (Auth::attempt($credentials)) {
+            return [
+                'register' => true,
+                'auth' => true,
+                'about' => 'Login efetuado!'
+            ];
+        } else {
+            return [
+                'register' => true,
+                'auth' => false,
+                'about' => 'O novo usuário foi cadastrado, mas o primeiro login não ocorreu.'
+            ];
+        }
     }
 }

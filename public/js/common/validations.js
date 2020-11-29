@@ -1,4 +1,4 @@
-export{ insertingFeedback, validateEmail, validatePassword }
+export{ insertingFeedback, validateEmail, validatePassword, validateName }
 
 function insertingFeedback(msg, type = 'error', main){
   let icon = ''
@@ -75,5 +75,13 @@ function validatePassword(password){
     return {
       valid: true
     }
+  }
+}
+
+function validateName(name){
+  if(name.length <= 0){
+    return false
+  } else {
+    return true
   }
 }

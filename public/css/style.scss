@@ -118,11 +118,47 @@ main{
   justify-content: center;
 
   h2{
-    font-size: rem(36px);
-    line-height: rem(50px);
+    font-size: nome(36px);
+    line-height: rem(60px);
     color: $green_1;
     margin-bottom: 44px;
     font-weight: normal;
+  }
+
+  div.buttons{
+    display: flex;
+    flex-direction: row;
+
+    a{
+      display: inline-block;
+      margin-right: 25px;
+      font-size: rem(24px);
+      line-height: rem(24px);
+      padding: 20px 30px;
+      border: 1px solid $green_1;
+
+      &:hover, &:focus, &:active{
+        text-decoration: none;
+      }
+
+      &.primary{
+        color: $g_0;
+        background: $green_1;
+
+        &:hover, &:focus, &:active{
+          background: $green_hover_1;
+        }
+      }
+
+      &.secondary{
+        color: $green_1;
+        background: $g_0;
+
+        &:hover, &:focus, &:active{
+          background: $green_0;
+        }
+      }
+    }
   }
 
   input{
@@ -201,6 +237,10 @@ aside{
       background: $green_hover_1;
       cursor: pointer;
     }
+  }
+
+  img{
+    width: 60px;
   }
 }
 

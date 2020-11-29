@@ -91,10 +91,39 @@ main {
 }
 main h2 {
   font-size: 2.25rem;
-  line-height: 3.125rem;
+  line-height: 3.75rem;
   color: #477e2d;
   margin-bottom: 44px;
   font-weight: normal;
+}
+main div.buttons {
+  display: flex;
+  flex-direction: row;
+}
+main div.buttons a {
+  display: inline-block;
+  margin-right: 25px;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  padding: 20px 30px;
+  border: 1px solid #477e2d;
+}
+main div.buttons a:hover, main div.buttons a:focus, main div.buttons a:active {
+  text-decoration: none;
+}
+main div.buttons a.primary {
+  color: #ffffff;
+  background: #477e2d;
+}
+main div.buttons a.primary:hover, main div.buttons a.primary:focus, main div.buttons a.primary:active {
+  background: #407129;
+}
+main div.buttons a.secondary {
+  color: #477e2d;
+  background: #ffffff;
+}
+main div.buttons a.secondary:hover, main div.buttons a.secondary:focus, main div.buttons a.secondary:active {
+  background: #e5f0df;
 }
 main input {
   -moz-appearance: none;
@@ -159,6 +188,9 @@ aside.active {
 aside.active:hover {
   background: #407129;
   cursor: pointer;
+}
+aside img {
+  width: 60px;
 }
 
 footer {
